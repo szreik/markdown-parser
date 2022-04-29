@@ -31,4 +31,10 @@ public class MarkdownParseTest {
         explinks.add("hello.com");
         assertEquals(explinks, MarkdownParse.getLinks(content));
     }
+    @Test
+    public void getLinkstest_ex3() throws java.io.IOException{
+        String content = Files.readString(Path.of("example4.md"));
+        ArrayList<String> explinks = new ArrayList<String>();
+        assertEquals(explinks, MarkdownParse.getLinks(content));
+    }
 }
