@@ -29,7 +29,6 @@ public class MarkdownParseTest {
         String content = Files.readString(Path.of("example2.md"));
         ArrayList<String> explinks = new ArrayList<String>();
         explinks.add("hello.com");
-        explinks.add("school.edu");
         assertEquals(explinks, MarkdownParse.getLinks(content));
     }
 }
