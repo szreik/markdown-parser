@@ -31,8 +31,8 @@ public class MarkdownParseTest { // class declaration
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
         ArrayList<String> expectedLinks = new ArrayList<String>();
-        expectedLinks.add("https://funsite.com");
         expectedLinks.add("e(ncyclopedia.ed");
+        expectedLinks.add("https://funsite.com");
         //expectedLinks.add("abc def ghi");
         assertEquals(expectedLinks, links);
     }
