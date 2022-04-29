@@ -1,2 +1,2 @@
 [Link1](facebook.com)
-![link1](ImAnImage.com)
+![Image](ImAnImage.com)
