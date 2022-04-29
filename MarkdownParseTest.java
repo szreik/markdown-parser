@@ -1,40 +1,58 @@
-import static org.junit.Assert.*;
-import org.junit.*;
+import static org.junit.Assert.*; // imports assertEquals
+import org.junit.*; // imports JUnit library
+
+//import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.io.IOException;
-public class MarkdownParseTest {
-    @Test
-    public void addition() {
-        assertEquals(2, 1 + 1);
-    }
-    @Test
-    public void getLinkstest() throws java.io.IOException{
-        String content = Files.readString(Path.of("test-file.md"));
-        ArrayList<String> explinks = new ArrayList<String>();
-        explinks.add("https://something.com");
-        explinks.add("some-thing.html");
-        assertEquals(explinks, MarkdownParse.getLinks(content));
-    }
-    @Test
-    public void getLinkstest_ex1() throws java.io.IOException{
-        String content = Files.readString(Path.of("example.md"));
-        ArrayList<String> explinks = new ArrayList<String>();
 
-        assertEquals(explinks, MarkdownParse.getLinks(content));
+public class MarkdownParseTest { // class declaration
+   
+    @Test // telling Java to treat this method as a JUnit test
+    public void addition() { // method header
+    assertEquals(2, 1 + 1); // asserEquals() checks the second argument 
+                          // against the first argument
+    }
+
+    @Test
+    public void testTestFile1() throws java.io.IOException {
+        Path fileName = Path.of("test-file.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
+        expectedLinks.add("https://something.com");
+        expectedLinks.add("some-page.html");
+        assertEquals(expectedLinks, links);
+    }
+
+    @Test
+    public void testMyExample() throws java.io.IOException {
+        Path fileName = Path.of("myExamples.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
+        expectedLinks.add("https://funsite.com");
+        expectedLinks.add("e(ncyclopedia.ed");
+        //expectedLinks.add("abc def ghi");
+        assertEquals(expectedLinks, links);
+    }
+
+    @Test
+    public void testEmptyTestFile() throws java.io.IOException {
+        Path fileName = Path.of("empty-test-file.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
+        expectedLinks.add("no links found");
+        assertEquals(expectedLinks, links);
     }
     @Test
-    public void getLinkstest_ex2() throws java.io.IOException{
-        String content = Files.readString(Path.of("example2.md"));
-        ArrayList<String> explinks = new ArrayList<String>();
-        explinks.add("hello.com");
-        assertEquals(explinks, MarkdownParse.getLinks(content));
-    }
-    @Test
-    public void getLinkstest_ex3() throws java.io.IOException{
-        String content = Files.readString(Path.of("example4.md"));
-        ArrayList<String> explinks = new ArrayList<String>();
-        assertEquals(explinks, MarkdownParse.getLinks(content));
+    public void testImageNotFirst() throws java.io.IOException {
+        Path fileName = Path.of("test-file4.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> expectedLinks = new ArrayList<String>();
+        expectedLinks.add("facebook.com");
+        assertEquals(expectedLinks, links);
     }
 }
