@@ -21,7 +21,7 @@ public class MarkdownParseTest { // class declaration
         ArrayList<String> links = MarkdownParse.getLinks(content);
         ArrayList<String> expectedLinks = new ArrayList<String>();
         expectedLinks.add("https://something.com");
-        expectedLinks.add("some-page.html");
+        expectedLinks.add("somee-page.html");
         assertEquals(expectedLinks, links);
     }
 
