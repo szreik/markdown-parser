@@ -16,7 +16,7 @@ public class MarkdownParse {
             System.out.println("cannot process images");
         }
         if(markdown.contains("[") && markdown.contains("(")) {
-            while(currentIndex < markdown.length()) {
+ while(currentIndex < markdown.length()) {
                 int openBracket = markdown.indexOf("[", currentIndex);
                 int closeBracket = markdown.indexOf("]", openBracket);
                 int openParen = markdown.indexOf("(", closeBracket);
